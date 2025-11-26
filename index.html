@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Creador VIC♥️PERSI</title>
+  <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Lovers+Quarrel" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('triste.gif') center/cover no-repeat;
+      filter: brightness(0.92) saturate(1.35);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #ffecf9, #ffb6d9);
+      z-index: -1;
+      opacity: 0.35;
+    }
+
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Lovers Quarrel', cursive;
+      user-select: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    #startButton {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.35);
+      z-index: 100;
+      backdrop-filter: blur(2px);
+    }
+
+    .start-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .start-box {
+      background: linear-gradient(145deg, #ffe0f0, #ff9ec7);
+      padding: 14px 24px;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 
+        0 6px 18px rgba(230, 0, 115, 0.55),
+        inset 0 0 10px rgba(255, 200, 230, 0.6);
+      border: 3px solid #ff3399;
+      animation: float 1.8s ease-in-out infinite alternate;
+      display: inline-block;
+      font-size: 1.1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-5px) scale(1.02); }
+    }
+
+    .start-title {
+      font-family: 'Fredericka the Great', cursive;
+      font-size: 1.7rem;
+      color: #cc005e;
+      margin: 0 0 8px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      font-weight: 800;
+    }
+
+    .start-text {
+      font-family: 'Lovers Quarrel', cursive;
+      font-size: 1.35rem;
+      color: #b30052;
+      margin: 0;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(255, 80, 160, 0.6);
+    }
+
+    #stitch-fly {
+      position: absolute;
+      width: 60px;
+      height: auto;
+      pointer-events: none;
+      z-index: 10;
+      top: 50%;
+      left: 50%;
+      animation: orbit 12s linear infinite;
+      transform-origin: center;
+    }
+
+    @keyframes orbit {
+      0% { transform: translate(-50%, -50%) rotate(0deg) translateX(90px) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg) translateX(90px) rotate(-360deg); }
+    }
+
+    #mainContent {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s ease, visibility 0.6s;
+    }
+
+    #mainContent.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back {
+      text-align: center;
+      padding-top: 12px;
+    }
+
+    .topic {
+      margin: 4px 0;
+      font-family: 'Fredericka the Great', cursive;
+      font-size: 1.72rem;
+      color: #cc005e;
+      text-shadow: 
+        2px 2px 3px rgba(0, 0, 0, 0.2),
+        0 0 8px rgba(255, 50, 130, 0.8);
+      letter-spacing: 0.9px;
+      animation: pulse 1.5s infinite alternate;
+      font-weight: 800;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.028); }
+    }
+
+    .content-1,
+    .content-2 {
+      font-size: 1.5rem;
+      margin: 9px 0;
+      color: #b30052;
+      text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.25),
+        0 0 6px rgba(255, 80, 150, 0.7);
+      font-weight: 700;
+    }
+
+    .footer {
+      margin: 24px 0 5px;
+      font-family: 'Fredericka the Great', cursive;
+      font-size: 1.7rem;
+      color: #cc005e;
+      text-shadow: 
+        2px 2px 3px rgba(0, 0, 0, 0.2),
+        0 0 8px rgba(255, 60, 140, 0.85);
+      font-weight: 800;
+    }
+
+    .love-box {
+      width: 86%;
+      max-width: 260px;
+      margin: 12px auto;
+      padding: 16px 12px;
+      background: linear-gradient(145deg, #fff0f6, #ffd6eb);
+      border: 3px solid #e60073;
+      border-radius: 22px;
+      box-shadow: 0 6px 18px rgba(230, 0, 115, 0.3);
+      font-size: 1.3rem;
+      color: #99004d;
+      font-weight: 600;
+      line-height: 1.55;
+      position: relative;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 6px 18px rgba(230, 0, 115, 0.3); }
+      to { box-shadow: 0 6px 26px rgba(230, 0, 115, 0.5); }
+    }
+
+    .love-box::before,
+    .love-box::after {
+      font-size: 1.4rem;
+      top: -12px;
+    }
+
+    .heart-image {
+      margin: 16px auto;
+      width: 100px;
+      height: auto;
+      display: block;
+      animation: beat 0.7s infinite alternate;
+      filter: drop-shadow(0 0 16px rgba(255, 51, 153, 0.7));
+    }
+
+    @keyframes beat {
+      0% { transform: scale(1); }
+      100% { transform: scale(0.85); }
+    }
+
+    .falling-word {
+      position: absolute;
+      top: -32px;
+      font-family: 'Lovers Quarrel', cursive;
+      font-weight: 800;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.96;
+      text-shadow: 
+        0 1px 2px rgba(0,0,0,0.3),
+        0 0 6px rgba(255, 100, 180, 0.9);
+      animation: fall linear forwards;
+      color: #cc0066;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-32px); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(110vh); opacity: 0; }
+    }
+
+    .credits-container {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .credits-box {
+      display: inline-block;
+      font-family: 'Pacifico', cursive;
+      font-size: 0.88rem;
+      color: #a8005f;
+      letter-spacing: 0.6px;
+      font-weight: 600;
+      text-shadow: 0 0 5px rgba(255, 120, 190, 0.7);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="startButton">
+    <div class="start-container">
+      <img id="stitch-fly" src="https://i.postimg.cc/MTcjvYrV/86d7cd8c4817fb0bdaf951ceb24f7496-removebg-preview.png" alt="Stitch volando">
+      <div class="start-box">
+        <div class="start-title">💌</div>
+        <p class="start-text">Toca aquí<br>para comenzar</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="mainContent">
+    <div class="back">
+      <h1 class="topic">UN DETALLE DE VIC💜PERSI<br>💗</h1>
+      <p class="content-1">Que Afortunado soy de tenerte en mi vida</p>
+      <p class="content-2">T.Q.M</p>
+      
+      <img 
+        src="https://i.postimg.cc/7LThvbFn/0d48bf7028f2d11acac73a2c4deb5eee-removebg-preview.png" 
+        alt="Corazón" 
+        class="heart-image"
+      />
+      
+      <p class="footer">T..💜..Q..💜..M <br>Creador Vic Persi</p>
+      <div class="love-box" id="loveMessage"></div>
+    </div>
+
+    <div class="credits-container">
+      <div class="credits-box">
+        By: VIC 💜 PERSI
+      </div>
+    </div>
+  </div>
+
+  <audio id="bgMusic" preload="auto">
+    <source src="https://files.catbox.moe/ptf3yb.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const startButton = document.getElementById("startButton");
+    const mainContent = document.getElementById("mainContent");
+    const bgMusic = document.getElementById("bgMusic");
+    const loveMessageElement = document.getElementById("loveMessage");
+
+    startButton.addEventListener("click", function() {
+      bgMusic.volume = 0.65;
+      const playPromise = bgMusic.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+      
+      startButton.style.display = "none";
+      mainContent.classList.add("show");
+      
+      setTimeout(() => {
+        typeWriter();
+        startFallingWords();
+      }, 500);
+    });
+
+    const longMessage = `Mi amor, cada vez que pienso en ti, mi corazón late más fuerte, como si supiera que estás cerca, incluso cuando la distancia nos separa. Desde el primer momento en que te vi, algo en mí cambió para siempre. No fue solo tu mirada, ni tu sonrisa, ni tu voz… fue todo tú. Fue esa luz que irradias sin querer, esa ternura que das sin pedir nada a cambio, esa forma tuya de hacer del mundo un lugar más cálido, más seguro, más hermoso.\n\nContigo aprendí que el amor no es solo pasión, sino también paciencia. No es solo decir “te amo”, sino demostrarlo en cada gesto pequeño: en cómo me escuchas cuando hablo, en cómo me abrazas sin prisa, en cómo ríes conmigo hasta que nos duela el estómago. Eres mi refugio en los días nublados, mi alegría en los días grises, mi paz cuando todo gira demasiado rápido.`;
+
+    function typeWriter() {
+      let i = 0;
+      const timer = setInterval(() => {
+        if (i < longMessage.length) {
+          loveMessageElement.innerHTML += longMessage.charAt(i);
+          i++;
+        } else {
+          clearInterval(timer);
+        }
+      }, 32);
+    }
+
+    function startFallingWords() {
+      const words = ['Amor', 'Eterno', 'Corazón', 'Alma', 'Mi Todo', 'Contigo', 'Te Amo'];
+      const colors = ['#cc0066', '#ff2288', '#d9006b', '#ff55aa'];
+
+      setInterval(() => {
+        const word = document.createElement('div');
+        word.className = 'falling-word';
+        word.textContent = words[Math.floor(Math.random() * words.length)];
+        word.style.left = Math.random() * 90 + 5 + 'vw';
+        word.style.fontSize = (Math.random() * 16 + 15) + 'px';
+        word.style.color = colors[Math.floor(Math.random() * colors.length)];
+        word.style.animationDuration = (Math.random() * 4.8 + 3) + 's';
+        document.body.appendChild(word);
+        setTimeout(() => word.remove(), 6000);
+      }, 550);
+    }
+
+    document.body.addEventListener('click', e => createHeartExplosion(e.clientX, e.clientY));
+    document.body.addEventListener('touchstart', e => {
+      for (let t of e.changedTouches) createHeartExplosion(t.clientX, t.clientY);
+    });
+
+    function createHeartExplosion(x, y) {
+      const hearts = ['❤️', '💕', '💖', '💗', '💘'];
+      for (let i = 0; i < 22; i++) {
+        const h = document.createElement('div');
+        h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        Object.assign(h.style, {
+          position: 'absolute',
+          left: x + 'px',
+          top: y + 'px',
+          transform: 'translate(-50%, -50%)',
+          fontSize: (14 + Math.random() * 8) + 'px',
+          pointerEvents: 'none',
+          zIndex: '100'
+        });
+        document.body.appendChild(h);
+
+        const angle = Math.random() * 360;
+        const r = Math.random() * 135 + 70;
+        const tx = r * Math.cos(angle * Math.PI / 180);
+        const ty = r * Math.sin(angle * Math.PI / 180);
+
+        h.animate([
+          { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+          { transform: `translate(-50%, -50%) translate(${tx}px, ${ty}px) rotate(${angle}deg) scale(${0.4 + Math.random() * 0.6})`, opacity: 0 }
+        ], {
+          duration: 900 + Math.random() * 400,
+          easing: 'cubic-bezier(0.2, 0.8, 0.4, 1)'
+        });
+
+        setTimeout(() => h.remove(), 1400);
+      }
+    }
+  </script>
+</body>
+</html>
